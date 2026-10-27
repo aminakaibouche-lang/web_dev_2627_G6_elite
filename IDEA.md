@@ -102,5 +102,17 @@ The planned website will include the following pages:
 
 The team brainstormed the FarmAway project by identifying the target users, the main problem, the proposed services, and the website's pages and dashboards.
 
-**Brainstorming board:** See the team's brainstorming notes and diagrams.
 
+
+
+## 7. Brainstorming Board
+
+The following screenshots document our team's brainstorming process, including the project idea, identified problems, proposed services, target users, and website structure.
+
+### Brainstorming Screenshot 1
+
+![Team brainstorming screenshot 1](docs/brainstorming-1.png)
+
+### Brainstorming Screenshot 2
+
+![Team brainstorming screenshot 2](docs/brainstorming-2.png)
