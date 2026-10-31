@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine search |PharmaFind</title>
+    <link rel="icon" href="../images/favicon.png" favicon.png">
+    <link rel="stylesheet" href="../css/medicines.css">
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <main>
+        <h1>Find a medicine</h1>
+        <form action="#" method="get">
+            <section>
+                <label for="med-search">Medicine name</label>
+                <input type="search" name="q" id="med-search" placeholder="e.g. Paracetamol" required>
+                <!-- <input type="text" name="city" id="city" placeholder="Jijel"> -->
+                <label for="city">City</label>
+                <select name="city" id="city">
+                    <option value="" disabled selected>Choose a city</option>
+                    <option value="jijel">Jijel</option>
+                    <option value="mila">Mila</option>
+                    <option value="algiers">Algiers</option>
+                    <option value="tizi-ouzou">Tizi Ouzou</option>
+                    <option value="khenchela">Khenchela</option>
+                </select>
+
+                <button type="submit" class="btn btn-primary">Search</button>
+            </section>
+
+
+
+            <aside>
+                <h2> Filters</h2>
+                <fieldset>
+                    <legend>Status</legend>
+                    <label for="open">Open Now</label>
+                    <input type="checkbox" name="open" id="open">
+                    <label for="night-duty">Night duty</label>
+                    <input type="checkbox" name="night-duty" id="night-duty">
+                    <label for="available"> Available</label>
+                    <input type="checkbox" name="available" id="available">
+
+                </fieldset>
+                <fieldset>
+                    <legend>Area</legend>
+                    <label><input type="checkbox" name="area" value="centre-ville"> Centre Ville</label>
+                    <label><input type="checkbox" name="area" value="el-hamma"> El Hamma</label>
+                    <label><input type="checkbox" name="area" value="cite-1er-novembre"> Cité 1er Novembre</label>
+
+                </fieldset>
+                <button type="reset"> Reset filters</button>
+
+            </aside>
+
+            <section>
+                <h2> Resaults</h2>
+                <p>3 pharmacies have Paracetamol in Khenchela</p>
+
+                <ul>
+                    <li>
+                        <article>
+                            <h3>Pharmacie El Amal</h3>
+                            <p class="status status-open">Open</p>
+                            <p class="location">Centre Ville, Khenchela</p>
+                            <p class="medicine-name">Paracetamol</p>
+                            <p class="availability availability-yes">Available</p>
+                            <a href="pharmacy.html?id=1" class="btn btn-primary">View pharmacy</a>
+                        </article>
+                    </li>
+                </ul>
+                <p class="note">Availability is entered by each pharmacy and can change during the day. Please call to
+                    confirm before you travel.</p>
+            </section>
+
+    </main>
+    <footer>
+        <h2>PharmaFind</h2>
+        <p>Disclaimer: this platform provides pharmacy and medicine availability information. It does not provide
+            medical diagnosis, treatment recommendations, or professional medical advice.</p>
+    </footer>
+
+</body>
+
+</html>
