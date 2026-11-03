@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthPath | Create Account</title>
+    <link rel="icon" type="image/jpg" href="icon.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #119b83;
+            --primary-dark: #087d6b;
+            --navy: #173b45;
+            --text: #53666c;
+            --muted: #89999d;
+            --background: #f3faf8;
+            --border: #e2ece9;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--navy);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            height: 80px;
+            padding: 0 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 11px;
+            margin-right: 9px;
+        }
+
+        .dot {
+            color: var(--primary);
+        }
+
+        .nav-link {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 540px;
+            margin: 45px auto;
+            padding: 0 20px;
+        }
+
+        .register-card {
+            background: white;
+            padding: 38px;
+            border: 1px solid #eaf0ee;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px #173b450b;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .heading h1 {
+            font-size: 29px;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        .heading p {
+            color: var(--text);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .role-label,
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .roles {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 23px;
+        }
+
+        .role-option {
+            cursor: pointer;
+        }
+
+        .role-option input {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .role-box {
+            min-height: 95px;
+            padding: 15px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            transition: 0.2s;
+        }
+
+        .role-icon {
+            font-size: 23px;
+            color: var(--primary);
+        }
+
+        .role-box strong {
+            font-size: 13px;
+        }
+
+        .role-box small {
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .role-option input:checked + .role-box {
+            border: 1.5px solid var(--primary);
+            background: #f0fbf7;
+        }
+
+        .role-option:focus-within .role-box {
+            outline: 2px solid #119b8355;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 46px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            padding: 0 13px;
+            outline: none;
+            font-family: inherit;
+            font-size: 12px;
+            color: var(--navy);
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px #119b8315;
+        }
+
+        .form-group input::placeholder {
+            color: #a7b3b6;
+        }
+
+        .register-button {
+            width: 100%;
+            height: 49px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 9px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .register-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .login-text {
+            text-align: center;
+            margin-top: 23px;
+            color: var(--text);
+            font-size: 12px;
+        }
+
+        .login-text a {
+            color: var(--primary-dark);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .login-text a:hover {
+            text-decoration: underline;
+        }
+
+        .terms {
+            color: var(--muted);
+            font-size: 10px;
+            line-height: 1.7;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 0 20px;
+                height: 70px;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .register-card {
+                padding: 25px 19px;
+            }
+
+            .heading h1 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">✚</span>
+            HealthPath<span class="dot">.</span>
+        </a>
+
+        <a href="index.html" class="nav-link">Sign in</a>
+    </header>
+
+    <main class="container">
+        <div class="register-card">
+
+            <div class="heading">
+                <h1>Create your account</h1>
+                <p>Join HealthPath and make finding medicine easier.</p>
+            </div>
+
+            <form action="#" method="post">
+
+                <span class="role-label">I am registering as a</span>
+
+                <div class="roles">
+
+                    <label class="role-option">
+                        <input type="radio" name="role"
+                               value="patient" checked required>
+
+                        <span class="role-box">
+                            <span class="role-icon">♙</span>
+                            <strong>Patient</strong>
+                            <small>Find medicines nearby</small>
+                        </span>
+                    </label>
+
+                    <label class="role-option">
+                        <input type="radio" name="role"
+                               value="pharmacist" required>
+
+                        <span class="role-box">
+                            <span class="role-icon">⚕</span>
+                            <strong>Pharmacist</strong>
+                            <small>Manage your pharmacy</small>
+                        </span>
+                    </label>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="fullname">Full name</label>
+                    <input type="text" id="fullname" name="fullname"
+                           placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="you@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone number</label>
+                    <input type="tel" id="phone" name="phone"
+                           placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password"
+                           placeholder="Create a password"
+                           minlength="8" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Confirm password</label>
+                    <input type="password" id="confirm-password"
+                           name="confirm_password"
+                           placeholder="Enter your password again"
+                           minlength="8" required>
+                </div>
+
+                <button type="submit" class="register-button">
+                    Create Account →
+                </button>
+
+                <p class="login-text">
+                    Already have an account?
+                    <a href="index.html">Sign in</a>
+                </p>
+
+                <p class="terms">
+                    By creating an account, you agree to our terms
+                    and privacy policy.
+                </p>
+
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        © 2026 HealthPath. Making healthcare more accessible.
+    </footer>
+
+</body>
+</html>

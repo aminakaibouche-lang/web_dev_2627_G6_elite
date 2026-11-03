@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password | HealthPath</title>
+    <link rel="icon" type="image/jpg" href="icon.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #e8f7f3, #d5eee7);
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background: white;
+            padding: 40px 35px;
+            border-radius: 18px;
+            box-shadow: 0 10px 35px rgba(0, 80, 65, 0.12);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #168b76;
+            margin-bottom: 30px;
+        }
+
+        .logo span {
+            color: #263f3a;
+        }
+
+        .icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #e3f5ef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #263f3a;
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            text-align: center;
+            color: #71817c;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        label {
+            display: block;
+            color: #344c46;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #d5e3de;
+            border-radius: 9px;
+            outline: none;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        input:focus {
+            border-color: #168b76;
+            box-shadow: 0 0 0 3px rgba(22, 139, 118, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            background: #168b76;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #10715f;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 24px;
+            color: #168b76;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">Health<span>Path</span></div>
+
+        <div class="icon">🔐</div>
+
+        <h1>Create New Password</h1>
+
+        <p class="description">
+            Choose a strong new password for your account.
+            Make sure you can remember it.
+        </p>
+
+        <form id="resetForm">
+            <label for="password">New Password</label>
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter new password"
+                minlength="8"
+                required
+            >
+
+            <label for="confirmPassword">Confirm New Password</label>
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm new password"
+                minlength="8"
+                required
+            >
+
+            <button type="submit">Reset Password</button>
+        </form>
+
+        <a class="back" href="index.html">← Back to Login</a>
+    </div>
+
+    <script>
+        document.getElementById("resetForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            alert("Form completed! Connect this page to your backend to save the new password.");
+        });
+    </script>
+</body>
+</html>
