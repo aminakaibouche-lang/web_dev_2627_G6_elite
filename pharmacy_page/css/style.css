@@ -1,0 +1,388 @@
+:root {
+
+    /* Primary brand colors */
+    --primary-color: #2589DC;
+    --primary-dark: #1766B8;
+    --primary-light: #65A9F4;
+
+    /* Secondary brand colors */
+    --secondary-color: #19B59E;
+    --secondary-dark: #07836A;
+    --secondary-light: #72E4CC;
+
+    /* Text colors */
+    --text-primary: #102F55;
+    --text-secondary: #587494;
+    --text-white: #FFFFFF;
+    --text-muted: #8299B2;
+
+    /* Background colors */
+    --background-color: #E8F3FC;
+    --background-light: #F5F9FD;
+    --background-white: #FFFFFF;
+    --card-background: rgba(255, 255, 255, 0.72);
+
+    /* Status colors */
+    --success-color: #07836A;
+    --success-background: #C9F1E9;
+
+    --warning-color: #A96812;
+    --warning-background: #FFF0D9;
+
+    --danger-color: #C03945;
+    --danger-background: #FCE4E6;
+
+    --duty-color: #1766B8;
+    --duty-background: #1766B8;
+
+    /* Borders */
+    --border-color: #C7DFF5;
+    --border-light: rgba(255, 255, 255, 0.95);
+
+    /* Gradients */
+    --main-gradient: linear-gradient(
+        110deg,
+        var(--primary-color),
+        var(--secondary-color)
+    );
+
+    --page-gradient:
+        radial-gradient(
+            circle at 5% 10%,
+            var(--primary-light),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 95% 60%,
+            var(--secondary-light),
+            transparent 28%
+        ),
+        var(--background-color);
+
+    /* Typography */
+    --font-primary: Arial, Helvetica, sans-serif;
+
+    /* Border radius */
+    --radius-small: 8px;
+    --radius-medium: 15px;
+    --radius-large: 22px;
+    --radius-card: 27px;
+    --radius-pill: 30px;
+
+    /* Shadows */
+    --shadow-card:
+        0 12px 28px rgba(44, 92, 139, 0.12);
+
+    --shadow-button:
+        0 7px 15px rgba(34, 125, 174, 0.20);
+
+    --shadow-hover:
+        0 16px 32px rgba(44, 92, 139, 0.18);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    background: var(--page-gradient);
+}
+
+.pharmacies-page {
+    width: 100%;
+    max-width: 1150px;
+    margin: 35px auto;
+    padding: 20px;
+}
+
+.page-intro h1 {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.page-intro p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    margin-bottom: 22px;
+}
+
+
+.filters {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.filters select {
+    max-width: 100%;
+    padding: 13px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-medium);
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--text-primary);
+    font-size: 15px;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.filter-option input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--secondary-dark);
+}
+
+
+#apply-filters,
+.view-button {
+    background: var(--main-gradient);
+    color: var(--text-white);
+    border: none;
+    border-radius: var(--radius-pill);
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: var(--shadow-button);
+
+    transition:
+        transform var(--transition-fast),
+        filter var(--transition-fast);
+}
+
+#apply-filters {
+    padding: 15px 25px;
+}
+
+#apply-filters:hover,
+.view-button:hover {
+    filter: brightness(0.95);
+    transform: translateY(-2px);
+}
+
+
+.pharmacy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+
+.pharmacy-card {
+    min-width: 0;
+    padding: 25px 23px;
+
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-card);
+
+    background: var(--card-background);
+    box-shadow: var(--shadow-card);
+
+    display: flex;
+    flex-direction: column;
+
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.pharmacy-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.pharmacy-card[hidden] {
+    display: none;
+}
+
+.pharmacy-card h2 {
+    font-size: 20px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+    margin-bottom: 16px;
+}
+
+.location {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+
+.status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 7px 13px;
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.badge.open {
+    background: var(--success-background);
+    color: var(--success-color);
+}
+
+.badge.duty {
+    background: var(--duty-background);
+    color: var(--text-white);
+}
+
+.details {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    margin-bottom: 12px;
+}
+
+
+.view-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 15px 12px;
+    margin-top: auto;
+}
+
+#no-results {
+    margin-top: 25px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+
+@media (max-width: 900px) {
+
+    .pharmacies-page {
+        max-width: 760px;
+        margin: 25px auto;
+    }
+
+    .pharmacy-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .pharmacy-card {
+        padding: 22px 18px;
+    }
+
+    .filters {
+        gap: 12px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .pharmacies-page {
+        margin: 12px auto;
+        padding: 16px;
+    }
+
+    .page-intro h1 {
+        font-size: 34px;
+    }
+
+    .page-intro p {
+        font-size: 14px;
+    }
+
+    /* One card per row */
+
+    .pharmacy-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .pharmacy-card {
+        padding: 22px 20px;
+        border-radius: var(--radius-large);
+    }
+
+    .pharmacy-card h2 {
+        font-size: 19px;
+    }
+
+    /* Stack filters vertically */
+
+    .filters {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .filters select,
+    #apply-filters {
+        width: 100%;
+    }
+
+    .filter-option {
+        min-height: 28px;
+    }
+
+    .view-button {
+        padding: 14px;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .pharmacies-page {
+        padding: 12px;
+    }
+
+    .page-intro h1 {
+        font-size: 29px;
+    }
+
+    .pharmacy-card {
+        padding: 18px 15px;
+    }
+
+    .badge {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    #apply-filters {
+        padding: 13px 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+}
