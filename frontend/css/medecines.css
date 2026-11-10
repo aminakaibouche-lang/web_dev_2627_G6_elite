@@ -1,0 +1,377 @@
+:root {
+ 
+    /* Primary brand colors */
+    --primary-color: #2589DC;
+    --primary-dark: #1766B8;
+    --primary-light: #65A9F4;
+ 
+    /* Secondary brand colors */
+    --secondary-color: #19B59E;
+    --secondary-dark: #07836A;
+    --secondary-light: #72E4CC;
+ 
+    /* Text colors */
+    --text-primary: #102F55;
+    --text-secondary: #587494;
+    --text-white: #FFFFFF;
+    --text-muted: #8299B2;
+ 
+    /* Background colors */
+    --background-color: #E8F3FC;
+    --background-light: #F5F9FD;
+    --background-white: #FFFFFF;
+    --card-background: rgba(255, 255, 255, 0.72);
+ 
+    /* Status colors */
+    --success-color: #07836A;
+    --success-background: #C9F1E9;
+ 
+    --warning-color: #A96812;
+    --warning-background: #FFF0D9;
+ 
+    --danger-color: #C03945;
+    --danger-background: #FCE4E6;
+ 
+    --duty-color: #1766B8;
+    --duty-background: #1766B8;
+ 
+    /* Borders */
+    --border-color: #C7DFF5;
+    --border-light: rgba(255, 255, 255, 0.95);
+ 
+    /* Gradients */
+    --main-gradient: linear-gradient(
+        110deg,
+        var(--primary-color),
+        var(--secondary-color)
+    );
+ 
+    --page-gradient:
+        radial-gradient(
+            circle at 5% 10%,
+            var(--primary-light),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 95% 60%,
+            var(--secondary-light),
+            transparent 28%
+        ),
+        var(--background-color);
+ 
+    /* Typography */
+    --font-primary: Arial, Helvetica, sans-serif;
+ 
+    /* Border radius */
+    --radius-small: 8px;
+    --radius-medium: 15px;
+    --radius-large: 22px;
+    --radius-card: 27px;
+    --radius-pill: 30px;
+ 
+    /* Shadows */
+    --shadow-card:
+        0 12px 28px rgba(44, 92, 139, 0.12);
+ 
+    --shadow-button:
+        0 7px 15px rgba(34, 125, 174, 0.20);
+ 
+    --shadow-hover:
+        0 16px 32px rgba(44, 92, 139, 0.18);
+ 
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+}
+ 
+/* ---------- Base ---------- */
+ 
+*, *::before, *::after { box-sizing: border-box; }
+ 
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-primary);
+    line-height: 1.5;
+    color: var(--text-primary);
+    background: var(--page-gradient);
+    background-attachment: fixed;
+}
+ 
+h1, h2, h3, p { margin: 0; }
+ 
+a { color: var(--primary-dark); }
+ 
+:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 3px;
+}
+ 
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    padding: 0.6rem 1rem;
+    color: var(--text-white);
+    background: var(--primary-dark);
+    border-radius: var(--radius-small);
+    z-index: 10;
+}
+.skip-link:focus { top: 1rem; }
+ 
+/* ---------- Header / footer ---------- */
+ 
+.site-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 2rem;
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem 0;
+}
+ 
+.brand {
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--primary-dark);
+}
+ 
+.site-header nav { display: flex; gap: 1.25rem; }
+ 
+.site-header nav a {
+    padding: 0.25rem 0;
+    text-decoration: none;
+    color: var(--text-secondary);
+    border-bottom: 2px solid transparent;
+}
+.site-header nav a:hover { color: var(--text-primary); }
+.site-header nav a[aria-current="page"] {
+    color: var(--text-primary);
+    font-weight: 700;
+    border-color: var(--secondary-color);
+}
+ 
+.site-header nav .nav-login {
+    padding: 0.35rem 1rem;
+    color: var(--primary-dark);
+    background: var(--background-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+}
+.site-header nav .nav-login:hover { border-color: var(--primary-light); }
+ 
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem 3rem;
+}
+ 
+main > h1 {
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.9rem, 4vw, 2.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+ 
+.site-footer {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    color: var(--text-secondary);
+    background: var(--background-white);
+    border-top: 1px solid var(--border-color);
+}
+.site-footer h2 { margin-bottom: 0.4rem; font-size: 1.2rem; color: var(--primary-dark); }
+.site-footer .slogan { margin-bottom: 0.75rem; color: var(--text-primary); font-size: 0.95rem; }
+.site-footer p { max-width: 60ch; margin: 0 auto; font-size: 0.85rem; }
+ 
+.lead { max-width: 60ch; margin: -1rem 0 1.5rem; color: var(--text-secondary); font-size: 1.05rem; }
+ 
+/* ---------- Layout ---------- */
+ 
+.layout {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    grid-template-areas:
+        "search  search"
+        "filters results";
+    gap: 1.5rem;
+    align-items: start;
+}
+ 
+.search-bar, .filters, .pharmacy-card {
+    background: var(--card-background);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(10px);
+}
+ 
+/* ---------- Search bar ---------- */
+ 
+.search-bar {
+    grid-area: search;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+}
+ 
+.field { display: flex; flex-direction: column; gap: 0.4rem; min-width: 180px; }
+.field-grow { flex: 1 1 260px; }
+ 
+label { font-size: 0.9rem; font-weight: 700; }
+ 
+input[type="search"], select {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0 1rem;
+    font: inherit;
+    color: var(--text-primary);
+    background: var(--background-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-medium);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+input::placeholder { color: var(--text-muted); }
+input[type="search"]:hover, select:hover { border-color: var(--primary-light); }
+input[type="search"]:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(37, 137, 220, 0.18);
+}
+ 
+/* ---------- Buttons ---------- */
+ 
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0 1.5rem;
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+ 
+.btn-primary { color: var(--text-white); background: var(--main-gradient); box-shadow: var(--shadow-button); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+ 
+.btn-secondary { color: var(--primary-dark); background: var(--background-white); border-color: var(--border-color); }
+.btn-secondary:hover { background: var(--background-light); border-color: var(--primary-light); }
+ 
+/* ---------- Filters ---------- */
+ 
+.filters {
+    grid-area: filters;
+    position: sticky;
+    top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+.filters h2 { font-size: 1.25rem; }
+ 
+fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 1rem;
+    min-width: 0;
+    background: var(--background-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-medium);
+}
+legend { padding: 0 0.5rem; font-size: 0.9rem; font-weight: 700; color: var(--text-secondary); }
+ 
+.check { display: flex; align-items: center; gap: 0.6rem; font-weight: 400; font-size: 1rem; cursor: pointer; }
+input[type="checkbox"] { width: 1.15rem; height: 1.15rem; margin: 0; cursor: pointer; accent-color: var(--primary-color); }
+ 
+/* ---------- Results ---------- */
+ 
+.results { grid-area: results; display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+.results h2 { font-size: 1.5rem; }
+.count { color: var(--text-secondary); }
+ 
+.card-list { display: flex; flex-direction: column; gap: 1rem; margin: 0; padding: 0; list-style: none; }
+ 
+.pharmacy-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem 1.5rem;
+    transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+.pharmacy-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+ 
+.card-head, .stock { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.card-head h3 { font-size: 1.2rem; }
+ 
+.location, .updated { color: var(--text-secondary); }
+.updated { font-size: 0.85rem; color: var(--text-muted); }
+.medicine-name { font-weight: 700; }
+ 
+.card-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.75rem; margin-top: 0.5rem; }
+.card-actions .btn { min-height: 2.75rem; }
+ 
+/* Badges: a dot plus text, so meaning never depends on colour alone */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.85rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    white-space: nowrap;
+    border-radius: var(--radius-pill);
+}
+.badge::before { content: ""; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: currentColor; }
+ 
+.badge-open, .badge-yes { color: var(--success-color); background: var(--success-background); }
+.badge-low { color: var(--warning-color); background: var(--warning-background); }
+.badge-closed, .badge-no { color: var(--danger-color); background: var(--danger-background); }
+.badge-duty { color: var(--text-white); background: var(--duty-background); }
+ 
+.note {
+    padding: 0.85rem 1.1rem;
+    font-size: 0.9rem;
+    color: var(--warning-color);
+    background: var(--warning-background);
+    border-radius: var(--radius-medium);
+}
+ 
+/* ---------- Responsive ---------- */
+ 
+@media (max-width: 860px) {
+    .layout {
+        grid-template-columns: 1fr;
+        grid-template-areas: "search" "filters" "results";
+    }
+    .filters { position: static; }
+}
+ 
+@media (max-width: 560px) {
+    main { padding: 1rem 1rem 2rem; }
+    .site-header { padding: 1rem 1rem 0; }
+    .search-bar { padding: 1rem; }
+    .search-bar .btn { width: 100%; }
+    .card-actions .btn { flex: 1; }
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+    .pharmacy-card:hover, .btn-primary:hover { transform: none; }
+}

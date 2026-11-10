@@ -1,0 +1,231 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine search |PharmaFind</title>
+    <link rel="icon" href="../images/favicon.png" favicon.png">
+    <link rel="stylesheet" href="/frontend/css/medecines.css"
+<body>
+    <header>
+
+    </header>
+    <main>
+        <h1>Find a medicine</h1>
+        <form action="#" method="get">
+            <section>
+                <label for="med-search">Medicine name</label>
+                <input type="search" name="q" id="med-search" placeholder="e.g. Paracetamol" required>
+
+                <label for="city">City</label>
+                <select name="city" id="city">
+                    <option value="" disabled selected>Choose a city</option>
+                    <option value="jijel">Jijel</option>
+                    <option value="mila">Mila</option>
+                    <option value="algiers">Algiers</option>
+                    <option value="tizi-ouzou">Tizi Ouzou</option>
+                    <option value="khenchela">Khenchela</option>
+                </select>
+
+                <button type="submit" class="btn btn-primary">Search</button>
+            </section>
+
+
+
+            <aside>
+                <h2> Filters</h2>
+                <fieldset>
+                    <legend>Status</legend>
+                    <label for="open">Open Now</label>
+                    <input type="checkbox" name="open" id="open">
+                    <label for="night-duty">Night duty</label>
+                    <input type="checkbox" name="night-duty" id="night-duty">
+                    <label for="available"> Available</label>
+                    <input type="checkbox" name="available" id="available">
+
+                </fieldset>
+                <fieldset>
+                    <legend>Area</legend>
+                    <label><input type="checkbox" name="area" value="centre-ville"> Centre Ville</label>
+                    <label><input type="checkbox" name="area" value="el-hamma"> El Hamma</label>
+                    <label><input type="checkbox" name="area" value="cite-1er-novembre"> Cité 1er Novembre</label>
+
+                </fieldset>
+                <button type="reset"> Reset filters</button>
+
+            </aside>
+
+            <section>
+                <h2> Resaults</h2>
+                <p>3 pharmacies have Paracetamol in Khenchela</p>
+
+                <ul>
+                    <li>
+                        <article>
+                            <h3>Pharmacie El Amal</h3>
+                            <p class="status status-open">Open</p>
+                            <p class="location">Centre Ville, Khenchela</p>
+                            <p class="medicine-name">Paracetamol</p>
+                            <p class="availability availability-yes">Available</p>
+                            <a href="pharmacy.html?id=1" class="btn btn-primary">View pharmacy</a>
+                        </article>
+                    </li>
+                </ul>
+                <p class="note">Availability is entered by each pharmacy and can change during the day. Please call to
+                    confirm before you travel.</p>
+            </section>
+
+    </main>
+    <footer>
+        <h2>PharmaFind</h2>
+        <p>Disclaimer: this platform provides pharmacy and medicine availability information. It does not provide
+            medical diagnosis, treatment recommendations, or professional medical advice.</p>
+    </footer>
+
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HealPath: find the right pharmacy at the right time with the medicine you need.">
+    <title>Find a medicine | HealPath</title>
+    <link rel="icon" href="../images/favicon.png">
+    <link rel="stylesheet" href="/frontend/css/medecines.css">
+</head>
+ 
+<body>
+    <a class="skip-link" href="#results">Skip to results</a>
+ 
+    <header class="site-header">
+        <a class="brand" href="index.html">HealPath</a>
+        <nav aria-label="Main">
+            <a href="index.html">Home</a>
+            <a href="medicines.html" aria-current="page">Medicines</a>
+            <a href="night-duty.html">Night duty</a>
+            <a href="pharmacies.html">Pharmacies</a>
+            <a href="login.html" class="nav-login">Log in</a>
+        </nav>
+    </header>
+ 
+    <main>
+        <h1>Find a medicine</h1>
+        <p class="lead">Check which pharmacies report your medicine in stock before you travel.</p>
+ 
+        <form class="layout" action="#" method="get" role="search">
+ 
+            <section class="search-bar" aria-label="Search">
+                <div class="field field-grow">
+                    <label for="med-search">Medicine name</label>
+                    <input type="search" name="q" id="med-search" placeholder="e.g. Paracetamol" value="Paracetamol" required>
+                </div>
+                <div class="field">
+                    <label for="city">City</label>
+                    <select name="city" id="city">
+                        <option value="" disabled>Choose a city</option>
+                        <option value="jijel">Jijel</option>
+                        <option value="mila">Mila</option>
+                        <option value="algiers">Algiers</option>
+                        <option value="tizi-ouzou">Tizi Ouzou</option>
+                        <option value="khenchela" selected>Khenchela</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </section>
+ 
+            <aside class="filters" aria-label="Filters">
+                <h2>Filters</h2>
+                <fieldset>
+                    <legend>Status</legend>
+                    <label class="check"><input type="checkbox" name="open"> Open now</label>
+                    <label class="check"><input type="checkbox" name="night-duty"> Night duty</label>
+                    <label class="check"><input type="checkbox" name="available"> In stock</label>
+                </fieldset>
+                <fieldset>
+                    <legend>Area</legend>
+                    <label class="check"><input type="checkbox" name="area" value="centre-ville"> Centre Ville</label>
+                    <label class="check"><input type="checkbox" name="area" value="el-hamma"> El Hamma</label>
+                    <label class="check"><input type="checkbox" name="area" value="cite-1er-novembre"> Cité 1er Novembre</label>
+                </fieldset>
+                <button type="reset" class="btn btn-secondary">Reset filters</button>
+            </aside>
+ 
+            <section class="results" id="results" aria-labelledby="results-title">
+                <h2 id="results-title">Results</h2>
+                <p class="count" aria-live="polite">3 pharmacies have Paracetamol in Khenchela</p>
+ 
+                <ul class="card-list">
+                    <li>
+                        <article class="pharmacy-card">
+                            <div class="card-head">
+                                <h3>Pharmacie El Amal</h3>
+                                <p class="badge badge-open">Open</p>
+                            </div>
+                            <p class="location">Centre Ville, Khenchela</p>
+                            <p class="stock">
+                                <span class="medicine-name">Paracetamol</span>
+                                <span class="badge badge-yes">Available</span>
+                            </p>
+                            <p class="updated">Open until 20:00 · Reported 10 minutes ago</p>
+                            <div class="card-actions">
+                                <a href="tel:+213000000000" class="btn btn-secondary">Call</a>
+                                <a href="pharmacy.html?id=1" class="btn btn-primary">View pharmacy</a>
+                            </div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="pharmacy-card">
+                            <div class="card-head">
+                                <h3>Pharmacie Ibn Sina</h3>
+                                <p class="badge badge-duty">Night duty</p>
+                            </div>
+                            <p class="location">El Hamma, Khenchela</p>
+                            <p class="stock">
+                                <span class="medicine-name">Paracetamol</span>
+                                <span class="badge badge-low">Low stock</span>
+                            </p>
+                            <p class="updated">On duty until 8:00 · Reported 1 hour ago</p>
+                            <div class="card-actions">
+                                <a href="tel:+213000000000" class="btn btn-secondary">Call</a>
+                                <a href="pharmacy.html?id=2" class="btn btn-primary">View pharmacy</a>
+                            </div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="pharmacy-card">
+                            <div class="card-head">
+                                <h3>Pharmacie Les Oliviers</h3>
+                                <p class="badge badge-closed">Closed</p>
+                            </div>
+                            <p class="location">Cité 1er Novembre, Khenchela</p>
+                            <p class="stock">
+                                <span class="medicine-name">Paracetamol</span>
+                                <span class="badge badge-yes">Available</span>
+                            </p>
+                            <p class="updated">Opens at 8:00 · Reported this morning</p>
+                            <div class="card-actions">
+                                <a href="tel:+213000000000" class="btn btn-secondary">Call</a>
+                                <a href="pharmacy.html?id=3" class="btn btn-primary">View pharmacy</a>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+ 
+                <p class="note">Availability is entered by each pharmacy and can change during the day. Please call to confirm before you travel.</p>
+            </section>
+        </form>
+    </main>
+ 
+    <footer class="site-footer">
+        <h2>HealPath</h2>
+        <p class="slogan">Find the right pharmacy at the right time with the medicine you need.</p>
+        <p>Disclaimer: this platform provides pharmacy and medicine availability information. It does not provide medical diagnosis, treatment recommendations, or professional medical advice.</p>
+    </footer>
+</body>
+ 
+</html>
