@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Find nearby pharmacies, check medicine availability and see which pharmacies are on night duty.">
+  <meta name="color-scheme" content="light dark">
+  <title>HealPath</title>
+  <link rel="icon" type="ico" href="images/Icon.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/index.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="#home">HealPath</a>
+
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#pharmacies">Pharmacies</a></li>
+        <li><a href="#medicines">Medicines</a></li>
+        <li><a href="#night-duty">Night Duty</a></li>
+      </ul>
+    </nav>
+
+    <button class="btn outline small hide-mobile" id="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
+    <a class="btn small" id="auth-link" href="#login">Admin</a>
+  </header>
+
+  <main>
+    <section class="page" id="home" aria-label="Home">
+      <section class="hero">
+        <header class="hero-text">
+          <h1>Find your medicine, <em>find your pharmacy.</em></h1>
+          <p>Quickly locate nearby pharmacies, check medicine availability and find pharmacies on night duty.</p>
+
+          <form class="search-box" id="home-search" role="search">
+            <select id="kind" name="kind" aria-label="Search type">
+              <option value="medicine">Medicine</option>
+              <option value="pharmacy">Pharmacy</option>
+            </select>
+            <input type="search" name="q" list="meds" placeholder="Search for a medicine (e.g. Paracetamol)"
+              aria-label="Search" autocomplete="off">
+            <button class="btn" type="submit">Search</button>
+          </form>
+        </header>
+
+        <figure class="hero-art">
+          <span aria-hidden="true">✚</span>
+          <figcaption class="duty-card">
+            <p>🌙 Pharmacies on duty tonight</p>
+            <a class="btn small full" href="#night-duty">View All</a>
+          </figcaption>
+        </figure>
+      </section>
+
+      <ul class="features">
+        <li class="feature">
+          <a href="#medicines"><span class="icon" aria-hidden="true">🔍</span>Search for medicines</a>
+        </li>
+        <li class="feature">
+          <a href="#pharmacies"><span class="icon" aria-hidden="true">📍</span>Find nearby pharmacies</a>
+        </li>
+        <li class="feature">
+          <a href="#medicines"><span class="icon" aria-hidden="true">✅</span>Check availability</a>
+        </li>
+        <li class="feature">
+          <a href="#night-duty"><span class="icon" aria-hidden="true">🌙</span>Find night-duty pharmacies</a>
+        </li>
+      </ul>
+    </section>
+
+    
+    <section class="page" id="pharmacies" aria-labelledby="pharmacies-title" hidden>
+      <header>
+        <h2 id="pharmacies-title">All pharmacies</h2>
+        <p class="subtitle"><span id="ph-count">0</span> pharmacies found</p>
+      </header>
+
+      <details class="add-pharmacy admin-only" id="add-box" hidden>
+        <summary class="btn small" id="add-summary">+ Add a pharmacy</summary>
+        <form id="add-form" class="filters">
+          <label>Name *
+            <input type="text" name="name" required placeholder="e.g. Pharmacie El Amal" autocomplete="off">
+          </label>
+          <label>Area / district *
+            <input type="text" name="area" required placeholder="e.g. Centre Ville" autocomplete="off">
+          </label>
+          <label>Phone
+            <input type="tel" name="phone" placeholder="0555 12 34 56" autocomplete="off">
+          </label>
+          <label>Opens at
+            <input type="time" name="opens">
+          </label>
+          <label>Closes at
+            <input type="time" name="closes">
+          </label>
+          <label>Night duty date (optional)
+            <input type="date" name="duty">
+          </label>
+          <label>Medicines in stock (comma separated)
+            <input type="text" name="meds" placeholder="Paracetamol, Ibuprofen, Vitamin C" autocomplete="off">
+          </label>
+          <p class="form-actions">
+            <button class="btn" type="submit" id="form-submit">Save pharmacy</button>
+            <button class="btn outline" type="button" id="form-cancel" hidden>Cancel</button>
+          </p>
+        </form>
+      </details>
+
+      <p class="data-tools admin-only" hidden>
+        <button class="btn outline small" type="button" id="export-data">Export JSON</button>
+        <label class="btn outline small">Import JSON
+          <input type="file" id="import-data" accept="application/json,.json">
+        </label>
+        <button class="btn outline small danger" type="button" id="clear-data">Delete all</button>
+      </p>
+
+      <search class="filters">
+        <label>Search
+          <input type="text" id="filter-text" placeholder="Search for a pharmacy..." autocomplete="off">
+        </label>
+      </search>
+
+      <p class="empty" id="ph-empty" role="status" hidden>No pharmacies yet. Use “Add a pharmacy” above to create the first one.</p>
+
+      <ul class="list" id="ph-results">
+
+      </ul>
+    </section>
+
+  
+    <section class="page" id="medicines" aria-labelledby="page-title" hidden>
+      <header>
+        <h2 id="page-title">Search medicines</h2>
+        <p class="subtitle"><span id="med-count">0</span> pharmacies found</p>
+      </header>
+
+      <search class="filters">
+        <label>Medicine
+          <input type="text" id="filter-med" list="meds" placeholder="e.g. Ibuprofen" autocomplete="off">
+        </label>
+
+        <label>Area
+          <select id="filter-area">
+            <option>All</option>
+          </select>
+        </label>
+
+        <label>Availability
+          <select id="filter-avail">
+            <option>All</option>
+            <option>Available</option>
+            <option>Out of stock</option>
+          </select>
+        </label>
+
+        <label class="checkbox">
+          <input type="checkbox" id="filter-open">
+          Open now
+        </label>
+
+        <datalist id="meds"></datalist>
+      </search>
+
+      <p class="empty" id="unknown" role="status" hidden></p>
+      <p class="empty" id="med-empty" role="status" hidden>No pharmacies to show. Add pharmacies on the Pharmacies page or clear a filter.</p>
+
+      <ul class="list" id="med-results">
+
+      </ul>
+    </section>
+
+    
+    <section class="page" id="night-duty" aria-labelledby="night-duty-title" hidden>
+      <header>
+        <h2 id="night-duty-title">Pharmacies on night duty</h2>
+        <p class="subtitle">Pharmacies on duty at night in your city.</p>
+      </header>
+
+      <search class="filters">
+        <label>Date
+          <input type="date" id="duty-date">
+        </label>
+      </search>
+
+      <p class="empty" id="duty-empty" role="status" hidden>No pharmacy is registered on night duty for this date.</p>
+
+      <section class="two-columns" aria-label="Night-duty pharmacies list and map">
+        <ul class="list" id="duty-list">
+
+      </ul>
+
+        <figure class="map" aria-label="Map of duty pharmacies"></figure>
+      </section>
+    </section>
+
+    
+    <section class="page" id="login" aria-label="Admin login" hidden>
+      <form class="auth-form" id="auth-form" novalidate>
+        <h2>Admin login</h2>
+        <p class="subtitle">Only the administrator can add, edit or delete pharmacies.</p>
+
+        <label class="field">Email
+          <input type="email" name="email" placeholder="admin@email.com" autocomplete="email">
+        </label>
+
+        <label class="field">Password
+          <input type="password" name="password" autocomplete="current-password">
+        </label>
+
+        <p class="message" id="message" role="status"></p>
+
+        <button class="btn full" type="submit">Login</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <small>© 2026 HealPath. Availability is updated by pharmacies and may change.</small>
+  </footer>
+
+</body>
+
+</html>
