@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Heal_Path - Pharmacies</title>
+        <link rel="stylesheet" href="css/style.css">
+    
+    </head>
+    <body>
+        <main class="pharmacies-page">
+            <section class="page-intro">
+                <h1>Pharmacies</h1>
+                <p>Find a pharmacy near yuo</p>
+            </section>
+            <section class="filters">
+                <select id="city-filter" aria-label="Filtre by city">
+                    <option value="all">All cities</option>
+                    <option value="Alger centre">Alger centre</option>
+                    <option value="sidi abdallah">sidi abdallah</option>
+                </select>
+                <label class="filtre-option">
+                    <input type="checkbox" id="open-filter">
+                    <span>Open now</span>
+                </label>
+                   <label class="filtre-option">
+                    <input type="checkbox" id="duty-filter">
+                    <span>On duty tonight</span>
+                </label>
+                <button type="button" id=""apply-filters>
+                    Apply filtres
+                </button>
+            </section>
+         
+            <section class="pharmacy-grid" id="pharmacy-list">
+                   <!--pharmacy1-->
+                <article class="pharmacy-card"
+                         data-city="alger centre"
+                         data-open="true"
+                         data-duty="true">
+                       <h2>pharmacies El Amel</h2>
+                       <p class="location">alger centre</p>
+                       <div class="status">
+                        <span class="badge open">Open</span>
+                        <span class="badge duty">On duty tonight</span>
+                       </div>
+                       <p class="details">08:00 _ 20:00</p>
+                       <p class="details">08:00 _ 20:00</p>
+                       <a href="#" class="view-button">View pharmacy</a>
+                        </article>
+
+                    <!--pharmacy2-->
+                <article class="pharmacy-card"
+                         data-city="sidi abdallah"
+                         data-open="true"
+                         data-duty="false">
+                       <h2>pharmacies Benali</h2>
+                       <p class="location">maalma</p>
+                       <div class="status">
+                        <span class="badge open">Open</span>
+
+                       </div>
+                       <p class="details">09:00 _ 19:00</p>
+                       <p class="details">06 66 22 45 78</p>
+                       <a href="#" class="view-button">View pharmacy</a>
+                        </article>
+
+                                           <!--pharmacy3-->
+                <article class="pharmacy-card"
+                         data-city="algiers"
+                         data-open="true"
+                         data-duty="false">
+                       <h2>pharmacie Ziane</h2>
+                       <p class="location">alger centre</p>
+                       <div class="status">
+                        <span class="badge open">Open</span>
+                        <span class="badge duty">On duty tonight</span>
+                       </div>
+                       <p class="details">08:00 _ 22:00</p>
+                       <p class="details">0550 36 25 48</p>
+                       <a href="#" class="view-button">View pharmacy</a>
+                        </article>
+
+                                           <!--pharmacy4-->
+                <article class="pharmacy-card"
+                         data-city="algiers"
+                         data-open="true"
+                         data-duty="false">
+                       <h2>pharmacie Centrale</h2>
+                       <p class="location">alger centre</p>
+                       <div class="status">
+                        <span class="badge open">Open</span>
+                        
+                
+                       </div>
+                       <p class="details">08:00 _ 20:00</p>
+                       <p class="details">0661 25 48 75</p>
+                       <a href="#" class="view-button">View pharmacy</a>
+                        </article>
+
+                                           <!--pharmacy5-->
+                <article class="pharmacy-card"
+                         data-city="algiers"
+                         data-open="true"
+                         data-duty="true">
+                       <h2>pharmacie Nour</h2>
+                       <p class="location">alger centre</p>
+                       <div class="status">
+                        <span class="badge open">Open</span>
+                        <span class="badge duty">On duty tonight</span>
+                       </div>
+                       <p class="details">08:00 _ 18:00</p>
+                       <p class="details">0770 55 84 77</p>
+                       <a href="#" class="view-button">View pharmacy</a>
+                       </article>
+            </section>
+            <!--this for if no phamacies match the filters-->
+            <p id="no-results" hidden>
+                no pharmacies match your filters right now
+            </p>
+         
+        </main>
+       <script src="pharmacies.js"></script> 
+
+    </body>
+</html>
