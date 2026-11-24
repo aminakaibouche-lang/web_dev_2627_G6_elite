@@ -1,0 +1,1 @@
+Project: HealPath, a web application to find open pharmacies, night-duty pharmacies and available medicines.
