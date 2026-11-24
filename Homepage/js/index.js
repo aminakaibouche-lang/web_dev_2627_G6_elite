@@ -1,6 +1,6 @@
 // Frontend DOM manipulation, theme toggling, routing, and UI rendering
-
-import * as Api from "./api.js";
+// Api comes from js/api.js (mock, fake data), loaded before this file.
+const Api = window.Api;
 
 const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
@@ -9,7 +9,7 @@ const root = document.documentElement;
 const themeButton = $("#theme-toggle");
 let pharmacies = [];
 let isAdmin = false;
-let status = Api.sb ? "Loading pharmacies…" : "Database not configured yet: fill in js/config.js.";
+let status = "Loading pharmacies…";
 let editingId = null;
 let selectedDutyId = null;
 
@@ -360,31 +360,10 @@ function renderAll() {
 const form = $("#auth-form");
 const message = $("#message");
 const authLink = $("#auth-link");
-const stepEmail = $("#step-email");
-const stepOtp = $("#step-otp");
-const emailInput = $("#auth-email");
-const otpInput = $("#auth-otp");
-const btnSendCode = $("#btn-send-code");
-const btnBackEmail = $("#btn-back-email");
-const sentEmailLabel = $("#sent-email-label");
 
 function say(text, success = false) {
   message.textContent = text;
   message.classList.toggle("success", success);
-}
-
-function showOtpStep(email) {
-  sentEmailLabel.textContent = email;
-  stepEmail.hidden = true;
-  stepOtp.hidden = false;
-  otpInput.value = "";
-  otpInput.focus();
-}
-
-function showEmailStep() {
-  stepOtp.hidden = true;
-  stepEmail.hidden = false;
-  emailInput.focus();
 }
 
 async function refreshAdmin() {
@@ -404,62 +383,25 @@ authLink.addEventListener("click", async () => {
   }
 });
 
-if (Api.sb) Api.sb.auth.onAuthStateChange(() => setTimeout(refreshAdmin, 0));
-
-emailInput.addEventListener("input", () => say(""));
-otpInput.addEventListener("input", () => say(""));
-
-btnSendCode.addEventListener("click", async () => {
-  if (!Api.sb) return say("The database is not configured yet (js/config.js).");
-  const email = emailInput.value.trim();
-  if (!/^\S+@\S+\.\S+$/.test(email)) return say("Enter a valid email address.");
-
-  say("Checking authorization…", true);
-
-  const { isAdmin: isEmailAdmin, error: adminErr } = await Api.checkAdminEmail(email);
-  if (adminErr || !isEmailAdmin) {
-    return say("Access denied: Account is not an administrator.");
-  }
-
-  say("Sending verification code…", true);
-
-  const { error } = await Api.requestOtpCode(email);
-  if (error) {
-    say(`Could not send code: ${error.message}`);
-  } else {
-    say("Verification code sent! Please check your email inbox.", true);
-    showOtpStep(email);
-  }
-});
-
-btnBackEmail.addEventListener("click", () => {
-  say("");
-  showEmailStep();
-});
+form.elements.email.addEventListener("input", () => say(""));
+form.elements.password.addEventListener("input", () => say(""));
 
 form.onsubmit = async event => {
   event.preventDefault();
-  if (stepOtp.hidden) return;
+  const email = form.elements.email.value.trim();
+  const password = form.elements.password.value;
 
-  if (!Api.sb) return say("The database is not configured yet (js/config.js).");
-  const email = emailInput.value.trim();
-  const token = otpInput.value.trim();
+  if (!/^\S+@\S+\.\S+$/.test(email)) return say("Enter a valid email address.");
+  if (!password) return say("Please enter your password.");
 
-  if (!token) return say("Please enter the verification code.");
+  say("Signing in…", true);
+  const { error } = await Api.signIn(email, password);
+  if (error) return say(error.message);
 
-  say("Verifying code…", true);
-
-  const { error } = await Api.verifyOtpCode(email, token);
-  if (error) {
-    say(`Invalid code: ${error.message}`);
-  } else if (await refreshAdmin()) {
-    form.reset();
-    showEmailStep();
-    say("");
-    location.hash = "pharmacies";
-  } else {
-    say("This account is not an administrator.");
-  }
+  await refreshAdmin();
+  form.reset();
+  say("");
+  location.hash = "pharmacies";
 };
 
 renderAll();
