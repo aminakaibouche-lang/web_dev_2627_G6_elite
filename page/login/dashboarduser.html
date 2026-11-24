@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthPath | Patient Dashboard</title>
+    <link rel="icon" type="image/jpg" href="icon.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styleDash.css">
+
+    <script src="js/data.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/user-dashboard.js" defer></script>
+</head>
+<body id="top">
+
+    <header class="navbar">
+        <a href="user-dashboard.html" class="logo">
+            <span class="logo-icon">✚</span>
+            HealthPath<span class="dot">.</span>
+        </a>
+
+        <nav class="nav-links">
+            <a class="active" href="#top">Dashboard</a>
+            <a href="#medicines">Find medicines</a>
+            <a href="#pharmacies">Nearby pharmacies</a>
+            <a href="#history">My searches</a>
+            <a href="#profile">My profile</a>
+        </nav>
+
+        <div class="nav-user">
+            <div class="avatar" id="userAvatar"></div>
+            <span id="userName"></span>
+            <a class="logout" href="index.html">Logout</a>
+        </div>
+    </header>
+
+    <main class="page">
+
+        <div class="page-head">
+            <h1>Patient dashboard</h1>
+            <p>Welcome back! Find your medicines easily.</p>
+        </div>
+
+        <section class="welcome">
+            <h2>Hello, welcome to HealthPath!</h2>
+            <p>Find medicines and discover pharmacies around you.</p>
+        </section>
+
+        <section class="stats" id="stats"></section>
+
+        <section id="medicines" class="content-section">
+            <h2>Find your medicine</h2>
+
+            <form class="search-box" id="searchForm">
+                <input type="text" id="medicineSearch" placeholder="Search for a medicine..." autocomplete="off">
+                <button type="submit" class="btn">Search</button>
+            </form>
+
+            <div class="item-grid" id="medicineResults"></div>
+        </section>
+
+        <section id="pharmacies" class="content-section">
+            <h2>Nearby pharmacies</h2>
+            <div class="item-grid" id="pharmacyList"></div>
+        </section>
+
+        <section id="history" class="content-section">
+            <h2>Recent searches</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Medicine</th><th>Date</th><th>Status</th></tr>
+                    </thead>
+                    <tbody id="historyBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="profile" class="content-section">
+            <h2>My profile</h2>
+            <div class="item-card profile-card" id="profileCard"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        © 2026 HealthPath. Making healthcare more accessible.
+    </footer>
+
+</body>
+</html>

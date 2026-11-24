@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthPath | Admin Dashboard</title>
+    <link rel="icon" type="image/jpg" href="icon.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styleDash.css">
+
+    <script src="js/data.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/admin-dashboard.js" defer></script>
+</head>
+<body id="top">
+
+    <header class="navbar">
+        <a href="admin-dashboard.html" class="logo">
+            <span class="logo-icon">✚</span>
+            HealthPath<span class="dot">.</span>
+        </a>
+
+        <nav class="nav-links">
+            <a class="active" href="#top">Dashboard</a>
+            <a href="#users">Users</a>
+            <a href="#pharmacies">Pharmacies</a>
+            <a href="#medicines">Medicines</a>
+            <a href="#activity">Activity</a>
+        </nav>
+
+        <div class="nav-user">
+            <div class="avatar" id="adminAvatar"></div>
+            <span id="adminName"></span>
+            <a class="logout" href="index.html">Logout</a>
+        </div>
+    </header>
+
+    <main class="page">
+
+        <div class="page-head">
+            <h1>Admin dashboard</h1>
+            <p>Manage your HealthPath platform.</p>
+        </div>
+
+        <section class="welcome">
+            <h2>Welcome, Admin!</h2>
+            <p>Here is an overview of your pharmacy platform.</p>
+        </section>
+
+        <section class="stats" id="stats"></section>
+
+        <section id="users" class="content-section">
+            <div class="section-heading">
+                <h2>Manage users</h2>
+                <button class="btn" data-action="add" data-type="users">+ Add user</button>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Action</th></tr>
+                    </thead>
+                    <tbody id="usersBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="pharmacies" class="content-section">
+            <div class="section-heading">
+                <h2>Manage pharmacies</h2>
+                <button class="btn" data-action="add" data-type="pharmacies">+ Add pharmacy</button>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>ID</th><th>Pharmacy name</th><th>Location</th><th>Status</th><th>Action</th></tr>
+                    </thead>
+                    <tbody id="pharmaciesBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="medicines" class="content-section">
+            <div class="section-heading">
+                <h2>Manage medicines</h2>
+                <button class="btn" data-action="add" data-type="medicines">+ Add medicine</button>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>ID</th><th>Medicine</th><th>Category</th><th>Availability</th><th>Action</th></tr>
+                    </thead>
+                    <tbody id="medicinesBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="activity" class="content-section">
+            <h2>Recent platform activity</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Activity</th><th>Description</th><th>Date</th></tr>
+                    </thead>
+                    <tbody id="activityBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        © 2026 HealthPath. Making healthcare more accessible.
+    </footer>
+
+</body>
+</html>
